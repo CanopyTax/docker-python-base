@@ -3,7 +3,11 @@ FROM canopytax/alpine
 ENV PYTHONPATH=/app/.pip
 
 RUN apk add --update \
-    postgresql-dev gcc python3-dev musl-dev \
+    postgresql-dev \ 
+    gcc \
+    python3-dev \
+    musl-dev \
+    linux-headers \
     python3 && \
     python3 -m ensurepip && \
     rm -rf /var/cache/apk/*
