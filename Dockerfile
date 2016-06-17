@@ -5,8 +5,8 @@ ENV PYTHONPATH=/app/.pip
 RUN apk add --update \
     postgresql-dev \ 
     gcc \
+    libffi-dev \
     python3-dev \
-    py-cffi \
     musl-dev \
     linux-headers \
     python3 && \
