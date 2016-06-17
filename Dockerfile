@@ -12,6 +12,7 @@ RUN apk add --update \
     python3 && \
     python3 -m ensurepip && \
     python3 -m pip install dumb-init && \
+    python3 -m pip install -U pip && \
     python3 -m pip install gunicorn && \
     rm -rf /var/cache/apk/*
 
