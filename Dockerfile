@@ -6,6 +6,7 @@ RUN apk add --update \
     postgresql-dev \ 
     gcc \
     python3-dev \
+    py-cffi \
     musl-dev \
     linux-headers \
     python3 && \
