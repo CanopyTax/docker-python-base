@@ -1,8 +1,11 @@
 FROM canopytax/alpine
 
+ENV PYTHONPATH=/app/.pip
+
 RUN apk add --update \
     postgresql-dev \ 
     gcc \
+    ca-certificates \
     libffi-dev \
     python3-dev \
     musl-dev \
@@ -15,7 +18,7 @@ RUN apk add --update \
     rm -rf /var/cache/apk/*
 
 ONBUILD COPY requirements.txt /app/
-ONBUILD RUN python3 -m pip install -r /app/requirements.txt
+ONBUILD RUN python3 -m pip install -r /app/requirements.txt -t /app/.pip
 ONBUILD COPY . /app/
 
 WORKDIR /app
