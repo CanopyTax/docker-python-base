@@ -10,9 +10,7 @@ RUN apk add --update \
     linux-headers \
     python3 && \
     python3 -m ensurepip && \
-    python3 -m pip install dumb-init && \
-    python3 -m pip install -U pip && \
-    python3 -m pip install gunicorn && \
+    python3 -m pip install dumb-init pip gunicorn invoke && \
     rm -rf /var/cache/apk/*
 
 ONBUILD COPY requirements.txt /app/
