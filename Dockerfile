@@ -1,6 +1,6 @@
 FROM canopytax/alpine
 
-ENV PYTHONPATH=./.pip:/app/.pip
+ENV PYTHONPATH=./.pip:/app/.pip:.:
 
 
 RUN apk add --update \
@@ -22,6 +22,7 @@ RUN apk add --update \
         pytest \
         pytest-cov \
         pylint \
+        psycopg2 \
         flake8 \
         && \
     rm -rf /var/cache/apk/*
