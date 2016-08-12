@@ -13,7 +13,17 @@ RUN apk add --update \
     linux-headers \
     python3 && \
     python3 -m ensurepip && \
-    python3 -m pip install dumb-init pip gunicorn invoke && \
+    python3 -m pip install \
+        dumb-init \
+        pip \
+        gunicorn \
+        invoke \
+        alembic \
+        pytest \
+        pytest-cov \
+        pylint \
+        flake8 \
+        && \
     rm -rf /var/cache/apk/*
 
 ONBUILD COPY requirements.txt /app/
