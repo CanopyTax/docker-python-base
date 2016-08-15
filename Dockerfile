@@ -1,6 +1,8 @@
 FROM canopytax/alpine
 
-ENV PYTHONPATH=./.pip:/app/.pip:.:
+ENV PYTHONPATH=./.pip:/app/.pip:.: \
+    DOCKER=True
+    
 
 
 RUN apk add --update \
