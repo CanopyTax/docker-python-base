@@ -3,7 +3,8 @@ FROM canopytax/alpine
 ENV PYTHONPATH=./.pip:/app/.pip:.: \
     DOCKER=True    
 
-RUN apk add --update \
+RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+    apk add --no-cache \
     postgresql-dev \ 
     gcc \
     make \
@@ -11,10 +12,9 @@ RUN apk add --update \
     libffi-dev \
     python3-dev \
     musl-dev \
-    linux-headers \
-    python3 && \
+    python3@edge && \
     python3 -m ensurepip && \
-    python3 -m pip install \
+    python3 -m pip install -U \
         dumb-init \
         pip \
         gunicorn \
@@ -24,10 +24,7 @@ RUN apk add --update \
         pytest-cov \
         pylint \
         psycopg2 \
-        flake8 \
-        -U \
-        && \
-    rm -rf /var/cache/apk/*
+        flake8
 
 ONBUILD COPY requirements.txt /app/
 ONBUILD RUN python3 -m pip install -r /app/requirements.txt -t /app/.pip
