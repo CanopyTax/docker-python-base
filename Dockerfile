@@ -6,6 +6,7 @@ ENV PYTHONPATH=./.pip:/app/.pip:.: \
 RUN apk add --update \
     postgresql-dev \ 
     gcc \
+    make \
     ca-certificates \
     libffi-dev \
     python3-dev \
