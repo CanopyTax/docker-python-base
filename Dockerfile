@@ -4,14 +4,15 @@ ENV PYTHONPATH=./.pip:/app/.pip:.: \
     DOCKER=True    
 
 RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    apk add --no-cache \
+    apk add --no-cache -u\
     postgresql-dev \ 
+    musl-utils \
+    musl-dev \
     gcc \
     make \
     ca-certificates \
     libffi-dev \
     python3-dev \
-    musl-dev \
     python3@edge && \
     python3 -m ensurepip && \
     python3 -m pip install -U \
