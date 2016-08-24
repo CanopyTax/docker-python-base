@@ -1,9 +1,7 @@
 FROM canopytax/alpine
 
 ENV PYTHONPATH=./.pip:/app/.pip:.: \
-    DOCKER=True
-    
-
+    DOCKER=True    
 
 RUN apk add --update \
     postgresql-dev \ 
@@ -26,6 +24,7 @@ RUN apk add --update \
         pylint \
         psycopg2 \
         flake8 \
+        -U \
         && \
     rm -rf /var/cache/apk/*
 
