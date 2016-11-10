@@ -8,6 +8,7 @@ RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposito
     postgresql-dev \ 
     musl-utils \
     musl-dev \
+    jpeg-dev \
     gcc \
     make \
     ca-certificates \
