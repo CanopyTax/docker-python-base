@@ -9,6 +9,7 @@ RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposito
     musl-utils \
     musl-dev \
     jpeg-dev \
+    freetype-dev \
     gcc \
     make \
     ca-certificates \
