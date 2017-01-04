@@ -1,23 +1,19 @@
-FROM canopytax/alpine
+FROM python:3.5-alpine
 
 ENV PYTHONPATH=./.pip:/app/.pip:.: \
     DOCKER=True    
 
-RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    apk add --no-cache -u\
+RUN apk add --no-cache -u\
+    bash \
     postgresql-dev \ 
-    musl-utils \
-    musl-dev \
-    jpeg-dev \
-    freetype \
-    freetype-dev \
     gcc \
     make \
-    ca-certificates \
     libffi-dev \
-    python3-dev \
-    python3@edge && \
-    python3 -m ensurepip && \
+    musl-dev \
+    musl-utils \
+    jpeg-dev \
+    freetype \
+    freetype-dev && \
     python3 -m pip install -U \
         dumb-init \
         pip \
@@ -30,6 +26,8 @@ RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposito
         psycopg2 \
         flake8
 
+RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
+ONBUILD RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 ONBUILD COPY requirements.txt /app/
 ONBUILD RUN python3 -m pip install -r /app/requirements.txt -t /app/.pip
 ONBUILD COPY . /app/
