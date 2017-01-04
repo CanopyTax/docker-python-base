@@ -20,7 +20,7 @@ RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/reposito
         dumb-init \
         pip \
         gunicorn \
-        invoke \
+        "invoke==0.13.0"\
         alembic \
         pytest \
         pytest-cov \
