@@ -26,6 +26,9 @@ RUN apk add --no-cache -u\
         psycopg2 \
         flake8
 
+# install libreoffice
+RUN apk add --no-cache libreoffice
+
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 ONBUILD RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 ONBUILD COPY requirements.txt /app/
