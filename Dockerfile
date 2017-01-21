@@ -1,7 +1,8 @@
 FROM python:3.5-alpine
 
 ENV PYTHONPATH=./.pip:/app/.pip:.: \
-    DOCKER=True    
+    DOCKER=True \
+    PYTHONUNBUFFERED=1
 
 RUN apk add --no-cache -u\
     bash \
