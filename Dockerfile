@@ -33,10 +33,8 @@ RUN apk add --no-cache -u\
         pytest-cov \
         pylint \
         psycopg2 \
-        flake8 && \
-    apk del build-base unzip wget make fastjar && \
-    rm -rf /var/cache/apk/* && \
-    pdftk
+        flake8 
+
 RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 ONBUILD RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
 ONBUILD COPY requirements.txt /app/
