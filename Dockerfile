@@ -1,11 +1,11 @@
 FROM python:3.6-alpine
 
 ENV PYTHONPATH=./.pip:/app/.pip:.: \
-    DOCKER=True 
+    DOCKER=True
 
 RUN apk add --no-cache -u\
     bash \
-    postgresql-dev \ 
+    postgresql-dev \
     gcc \
     make \
     libffi-dev \
@@ -33,4 +33,4 @@ ONBUILD RUN python3 -m pip install -r /app/requirements.txt -t /app/.pip
 ONBUILD COPY . /app/
 
 WORKDIR /app
-CMD ["dumb-init", "./startup.sh"]
+CMD ["dumb-init", "./symlinks.sh"]
