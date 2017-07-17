@@ -12,3 +12,10 @@ RUN apk add --no-cache -u\
     unzip pdftk-${VER_PDFTK}-src.zip && \
     (cd pdftk-${VER_PDFTK}-dist/pdftk && make -f Makefile.Redhat && make -f Makefile.Redhat install) && \
     rm -rf pdftk-${VER_PDFTK}-dist pdftk-${VER_PDFTK}-src.zip && \
+
+ONBUILD RUN echo "Skipping parent ONBUILD steps"
+
+ONBUILD RUN echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
+ONBUILD COPY requirements.txt /app/
+ONBUILD RUN python3 -m pip install -r /app/requirements.txt -t /app/.pip
+ONBUILD COPY . /app/
