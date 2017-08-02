@@ -14,4 +14,4 @@ else
   echo "$CONFIG_DIR does not exist, symlinks were not created."
 fi
 echo "running startup.sh..."
-./startup.sh
+/app/startup.sh
