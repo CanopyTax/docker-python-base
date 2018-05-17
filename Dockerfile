@@ -14,6 +14,7 @@ RUN apk add --no-cache -u\
     jpeg-dev \
     freetype \
     git \
+    openssh-client \
     freetype-dev && \
     python3 -m pip install -U \
         dumb-init \
